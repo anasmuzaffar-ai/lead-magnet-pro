@@ -1,0 +1,4 @@
+project_id = "nimnceepheexjbixissf"
+
+[functions.run-job]
+verify_jwt = false
