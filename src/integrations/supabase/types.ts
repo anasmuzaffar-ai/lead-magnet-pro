@@ -14,7 +14,140 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      api_keys: {
+        Row: {
+          apify_token: string | null
+          id: string
+          serpapi_key: string | null
+          updated_at: string
+        }
+        Insert: {
+          apify_token?: string | null
+          id?: string
+          serpapi_key?: string | null
+          updated_at?: string
+        }
+        Update: {
+          apify_token?: string | null
+          id?: string
+          serpapi_key?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      jobs: {
+        Row: {
+          created_at: string
+          enrich: boolean
+          enriched_count: number
+          error: string | null
+          finished_at: string | null
+          id: string
+          logs: Json
+          max_results: number
+          progress: number
+          query: string
+          stage: string | null
+          started_at: string
+          status: string
+          total_leads: number
+        }
+        Insert: {
+          created_at?: string
+          enrich?: boolean
+          enriched_count?: number
+          error?: string | null
+          finished_at?: string | null
+          id?: string
+          logs?: Json
+          max_results?: number
+          progress?: number
+          query: string
+          stage?: string | null
+          started_at?: string
+          status?: string
+          total_leads?: number
+        }
+        Update: {
+          created_at?: string
+          enrich?: boolean
+          enriched_count?: number
+          error?: string | null
+          finished_at?: string | null
+          id?: string
+          logs?: Json
+          max_results?: number
+          progress?: number
+          query?: string
+          stage?: string | null
+          started_at?: string
+          status?: string
+          total_leads?: number
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          address: string | null
+          brand_name: string | null
+          created_at: string
+          emails: string[] | null
+          enriched: boolean
+          facebook_url: string | null
+          google_maps_url: string | null
+          id: string
+          instagram_url: string | null
+          job_id: string
+          owner_name: string | null
+          phone_1: string | null
+          phone_2: string | null
+          phone_3: string | null
+          website_url: string | null
+        }
+        Insert: {
+          address?: string | null
+          brand_name?: string | null
+          created_at?: string
+          emails?: string[] | null
+          enriched?: boolean
+          facebook_url?: string | null
+          google_maps_url?: string | null
+          id?: string
+          instagram_url?: string | null
+          job_id: string
+          owner_name?: string | null
+          phone_1?: string | null
+          phone_2?: string | null
+          phone_3?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          address?: string | null
+          brand_name?: string | null
+          created_at?: string
+          emails?: string[] | null
+          enriched?: boolean
+          facebook_url?: string | null
+          google_maps_url?: string | null
+          id?: string
+          instagram_url?: string | null
+          job_id?: string
+          owner_name?: string | null
+          phone_1?: string | null
+          phone_2?: string | null
+          phone_3?: string | null
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leads_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
