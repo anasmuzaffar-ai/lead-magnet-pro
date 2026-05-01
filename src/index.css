@@ -2,95 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Lead Generator — "Mission Control" design system.
+   Dark, technical, premium. All colors HSL. */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 230 32% 6%;
+    --foreground: 220 30% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --surface: 228 28% 9%;
+    --surface-elevated: 228 26% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card: 228 28% 9%;
+    --card-foreground: 220 30% 96%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover: 228 30% 8%;
+    --popover-foreground: 220 30% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary: 158 84% 52%;            /* Neon mint */
+    --primary-foreground: 230 40% 6%;
+    --primary-glow: 158 90% 65%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary: 228 26% 14%;
+    --secondary-foreground: 220 30% 96%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted: 228 22% 14%;
+    --muted-foreground: 220 15% 62%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent: 268 88% 68%;             /* Electric violet */
+    --accent-foreground: 220 30% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --warning: 38 95% 60%;
+    --success: 158 84% 52%;
+    --danger: 348 90% 62%;
 
-    --radius: 0.5rem;
+    --destructive: 348 90% 62%;
+    --destructive-foreground: 220 30% 98%;
 
-    --sidebar-background: 0 0% 98%;
+    --border: 228 22% 16%;
+    --input: 228 22% 14%;
+    --ring: 158 84% 52%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --radius: 0.875rem;
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(158 84% 52%) 0%, hsl(190 90% 55%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(268 88% 68%) 0%, hsl(220 90% 60%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(228 28% 11%) 0%, hsl(228 30% 8%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(158 84% 52% / 0.15), transparent 60%);
+    --gradient-mesh: radial-gradient(at 0% 0%, hsl(268 88% 68% / 0.18) 0px, transparent 50%),
+                     radial-gradient(at 100% 0%, hsl(158 84% 52% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 50% 100%, hsl(220 90% 60% / 0.10) 0px, transparent 50%);
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(158 84% 52% / 0.35);
+    --shadow-elevated: 0 20px 60px -20px hsl(230 50% 2% / 0.6), 0 0 0 1px hsl(228 22% 18% / 0.6);
+    --shadow-card: 0 8px 24px -8px hsl(230 50% 2% / 0.5);
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 230 32% 5%;
+    --sidebar-foreground: 220 25% 88%;
+    --sidebar-primary: 158 84% 52%;
+    --sidebar-primary-foreground: 230 40% 6%;
+    --sidebar-accent: 228 26% 12%;
+    --sidebar-accent-foreground: 220 30% 96%;
+    --sidebar-border: 228 22% 14%;
+    --sidebar-ring: 158 84% 52%;
   }
 }
 
@@ -100,6 +78,69 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image: var(--gradient-mesh);
+    background-attachment: fixed;
+  }
+
+  ::selection { background: hsl(var(--primary) / 0.3); color: hsl(var(--foreground)); }
+}
+
+@layer components {
+  .font-display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .glass-card {
+    background: linear-gradient(180deg, hsl(228 28% 11% / 0.7), hsl(228 30% 8% / 0.7));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(228 22% 18% / 0.6);
+    box-shadow: var(--shadow-card);
+  }
+
+  .glow-border {
+    position: relative;
+    isolation: isolate;
+  }
+  .glow-border::before {
+    content: "";
+    position: absolute; inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, hsl(158 84% 52% / 0.6), hsl(268 88% 68% / 0.4), transparent 60%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(228 22% 18% / 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(228 22% 18% / 0.5) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, #000 30%, transparent 70%);
+  }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 4px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.4); }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+  .pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .shimmer {
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
   }
 }
